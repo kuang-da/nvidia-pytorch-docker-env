@@ -1,11 +1,16 @@
 FROM nvcr.io/nvidia/pytorch:21.10-py3
 
 RUN conda install -c conda-forge pandas
+RUN conda install -c conda-forge tensorflow
+RUN conda install -c conda-forge keras
 
-# Setting up derek as the user 
+# Setting up non-root 
 ARG GID=1000
 ARG UID=1000
-RUN addgroup --gid $GID derek
-RUN useradd --system --create-home --shell /bin/bash --groups sudo -p "$(openssl passwd -1 my-password)" --uid $UID --gid $GID derek
-USER derek
-WORKDIR /home/derek
+ARG MY_USERNAME=derek
+ARG MY_PWS=myPassword
+
+RUN addgroup --gid $GID $MY_USERNAME
+RUN useradd --system --create-home --shell /bin/bash --groups sudo -p "$(openssl passwd -1 $MY_PWS)" --uid $UID --gid $GID $MY_USERNAME
+USER $MY_USERNAME
+WORKDIR /home/$MY_USERNAME

@@ -1,13 +1,13 @@
 version: "3.9"
 services: 
   crnn:
-    build: .
-    image: kuangda/crnn
-    ports: 
-      - "8888:8888"
+    build: 
+      context: .
+    image: kuangda/nvidia-pytorch
     environment: 
       - ROOT=TRUE
       - PASSWORD=my-pwd
       - DISABLE_AUTH=true
+    shm_size: '64gb'
     # volumes: 
-      # - .:/home/rstudio
+      # - .:/home/derek
