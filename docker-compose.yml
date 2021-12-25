@@ -9,5 +9,10 @@ services:
       - PASSWORD=my-pwd
       - DISABLE_AUTH=true
     shm_size: '64gb'
-    # volumes: 
-      # - .:/home/derek
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    volumes: 
+      - .:/home/derek
