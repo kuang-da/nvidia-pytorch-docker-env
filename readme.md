@@ -1,9 +1,12 @@
 # PyTorch Docker Env
 
+Location of Python is `/opt/conda/bin/python`,
+
 ## Features
 
 - Inherated from [NVIDIA NGC Catalog PyTorch Container](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch).
 - PyTroch is organized by conda
+
 
 ## Known issues and solutions
 
@@ -19,3 +22,4 @@
   docker-compose -v
   docker-compose version 1.29.2, build unknown
   ```
+  
