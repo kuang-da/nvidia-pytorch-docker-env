@@ -1,8 +1,9 @@
-FROM nvcr.io/nvidia/pytorch:21.10-py3
+FROM nvcr.io/nvidia/pytorch:21.12-py3
 
+RUN conda install -c conda-forge numpy
 RUN conda install -c conda-forge pandas
-RUN conda install -c conda-forge tensorflow
 RUN conda install -c conda-forge keras
+# RUN conda install -c conda-forge tensorflow=2.6.0
 
 # Setting up non-root 
 ARG GID=1000
